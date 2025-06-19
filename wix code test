@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checking Access...</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Checking your video access. Please wait...</p>
+
+    <iframe id="driveVideo" 
+            src="https://drive.google.com/file/d/1PO-uxgxulcrBpN_5isLXja7Q7WyqcfGs/preview" 
+            width="640" height="480" 
+            style="display:none">
+    </iframe>
+
+    <script>
+      window.onload = function() {
+        setTimeout(() => {
+          const text = document.body.innerText;
+
+          const accessDenied = text.includes("You need access") || 
+                               text.includes("couldn’t preview the file") || 
+                               text.includes("Request access");
+
+          if (accessDenied) {
+            window.location.href = "https://www.onyespeaks.com/access-denied";
+          } else {
+            window.location.href = "https://www.onyespeaks.com/hidden5";
+          }
+        }, 4000);
+      };
+    </script>
+  </body>
+</html>
